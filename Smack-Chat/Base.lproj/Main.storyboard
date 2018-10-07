@@ -87,6 +87,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ctU-js-2An"/>
                     </view>
+                    <connections>
+                        <outlet property="menuBtn" destination="lVE-JR-7ex" id="YBy-l9-glF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NZA-11-C17" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
