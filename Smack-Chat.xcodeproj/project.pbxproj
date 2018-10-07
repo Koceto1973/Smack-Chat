@@ -16,6 +16,7 @@
 		35BBC4B4216A53610019B1CF /* ChannelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BBC4B3216A53610019B1CF /* ChannelVC.swift */; };
 		35F4DA88216A80EB003DFDC3 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F4DA87216A80EB003DFDC3 /* GradientView.swift */; };
 		35F4DA8B216A96CB003DFDC3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F4DA8A216A96CB003DFDC3 /* Constants.swift */; };
+		35F4DA8D216AA2CB003DFDC3 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F4DA8C216AA2CB003DFDC3 /* LoginVC.swift */; };
 		7C9E0DA20CC5EFDD0DF872A1 /* Pods_Smack_Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51B056CEA7E9AAF65E0C4A25 /* Pods_Smack_Chat.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +35,7 @@
 		35BBC4B3216A53610019B1CF /* ChannelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelVC.swift; sourceTree = "<group>"; };
 		35F4DA87216A80EB003DFDC3 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		35F4DA8A216A96CB003DFDC3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		35F4DA8C216AA2CB003DFDC3 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		51B056CEA7E9AAF65E0C4A25 /* Pods_Smack_Chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Smack_Chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80B63FDD905DD98740174D25 /* Pods-Smack-Chat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smack-Chat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Smack-Chat/Pods-Smack-Chat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,6 +100,7 @@
 			children = (
 				35BBC4B1216A532B0019B1CF /* ChatVC.swift */,
 				35BBC4B3216A53610019B1CF /* ChannelVC.swift */,
+				35F4DA8C216AA2CB003DFDC3 /* LoginVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 			files = (
 				35BBC4B4216A53610019B1CF /* ChannelVC.swift in Sources */,
 				35F4DA8B216A96CB003DFDC3 /* Constants.swift in Sources */,
+				35F4DA8D216AA2CB003DFDC3 /* LoginVC.swift in Sources */,
 				35BBC4B2216A532B0019B1CF /* ChatVC.swift in Sources */,
 				35F4DA88216A80EB003DFDC3 /* GradientView.swift in Sources */,
 				3563D83D215B72650093287C /* AppDelegate.swift in Sources */,
