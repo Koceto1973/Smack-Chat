@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3533CB01216B3987000EC92F /* CreateAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3533CB00216B3987000EC92F /* CreateAccountVC.swift */; };
 		3563D83D215B72650093287C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3563D83C215B72650093287C /* AppDelegate.swift */; };
 		3563D842215B72650093287C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3563D840215B72650093287C /* Main.storyboard */; };
 		3563D844215B72660093287C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3563D843215B72660093287C /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		1993CA8C98EE1FD5BBCCF26B /* Pods-Smack-Chat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smack-Chat.release.xcconfig"; path = "Pods/Target Support Files/Pods-Smack-Chat/Pods-Smack-Chat.release.xcconfig"; sourceTree = "<group>"; };
+		3533CB00216B3987000EC92F /* CreateAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountVC.swift; sourceTree = "<group>"; };
 		3563D839215B72650093287C /* Smack-Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smack-Chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3563D83C215B72650093287C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3563D841215B72650093287C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				35BBC4B1216A532B0019B1CF /* ChatVC.swift */,
 				35BBC4B3216A53610019B1CF /* ChannelVC.swift */,
 				35F4DA8C216AA2CB003DFDC3 /* LoginVC.swift */,
+				3533CB00216B3987000EC92F /* CreateAccountVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 			files = (
 				35BBC4B4216A53610019B1CF /* ChannelVC.swift in Sources */,
 				35F4DA8B216A96CB003DFDC3 /* Constants.swift in Sources */,
+				3533CB01216B3987000EC92F /* CreateAccountVC.swift in Sources */,
 				35F4DA8D216AA2CB003DFDC3 /* LoginVC.swift in Sources */,
 				35BBC4B2216A532B0019B1CF /* ChatVC.swift in Sources */,
 				35F4DA88216A80EB003DFDC3 /* GradientView.swift in Sources */,

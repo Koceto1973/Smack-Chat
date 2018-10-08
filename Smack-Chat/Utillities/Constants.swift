@@ -9,3 +9,4 @@
 import Foundation
 
 let TO_LOGIN = "ToLogin"
+let TO_CREATE_ACCOUNT = "ToCreateAccount"
