@@ -250,10 +250,10 @@
             </objects>
             <point key="canvasLocation" x="2088.8000000000002" y="-421.43928035982015"/>
         </scene>
-        <!--View Controller-->
+        <!--Create AccountVC-->
         <scene sceneID="e8a-Bt-p8m">
             <objects>
-                <viewController id="Qm6-b3-9tp" sceneMemberID="viewController">
+                <viewController id="Qm6-b3-9tp" customClass="CreateAccountVC" customModule="Smack_Chat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tF3-FR-9tF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -276,6 +276,7 @@
                                 <state key="normal" image="closeButton"/>
                                 <connections>
                                     <action selector="ClosePressed:" destination="TsS-Hc-3NY" eventType="touchUpInside" id="GIW-Wy-dmd"/>
+                                    <action selector="ClosePressed:" destination="Qm6-b3-9tp" eventType="touchUpInside" id="IP9-X2-GJT"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="VDZ-PA-QoJ">
@@ -398,8 +399,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6pl-i1-Pdf"/>
                     </view>
+                    <connections>
+                        <segue destination="nGl-Vr-4AR" kind="unwind" identifier="UnwindToChannel" unwindAction="PrepareForUnwindWithSegue:" id="16F-Yt-pT0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="knN-W1-zTz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="nGl-Vr-4AR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2840.8000000000002" y="-421.43928035982015"/>
         </scene>
