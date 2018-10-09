@@ -12,6 +12,7 @@
 		3563D842215B72650093287C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3563D840215B72650093287C /* Main.storyboard */; };
 		3563D844215B72660093287C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3563D843215B72660093287C /* Assets.xcassets */; };
 		3563D847215B72660093287C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3563D845215B72660093287C /* LaunchScreen.storyboard */; };
+		356402D1216D37A10093032C /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356402D0216D37A10093032C /* AuthService.swift */; };
 		35BBC4B0216A50E00019B1CF /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35BBC4AF216A50E00019B1CF /* SWRevealViewController.m */; };
 		35BBC4B2216A532B0019B1CF /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BBC4B1216A532B0019B1CF /* ChatVC.swift */; };
 		35BBC4B4216A53610019B1CF /* ChannelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BBC4B3216A53610019B1CF /* ChannelVC.swift */; };
@@ -30,6 +31,7 @@
 		3563D843215B72660093287C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3563D846215B72660093287C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3563D848215B72660093287C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		356402D0216D37A10093032C /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		35BBC4AD216A50CA0019B1CF /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		35BBC4AE216A50DF0019B1CF /* Smack-Chat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Smack-Chat-Bridging-Header.h"; sourceTree = "<group>"; };
 		35BBC4AF216A50E00019B1CF /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 		3563D83B215B72650093287C /* Smack-Chat */ = {
 			isa = PBXGroup;
 			children = (
+				356402CF216D37740093032C /* Services */,
 				35F4DA89216A96A0003DFDC3 /* Utillities */,
 				35BBC4AC216A508E0019B1CF /* SWreveal */,
 				35BBC4AB216A50840019B1CF /* Model */,
@@ -95,6 +98,14 @@
 				3563D848215B72660093287C /* Info.plist */,
 			);
 			path = "Smack-Chat";
+			sourceTree = "<group>";
+		};
+		356402CF216D37740093032C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				356402D0216D37A10093032C /* AuthService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		35BBC4A9216A50570019B1CF /* Controller */ = {
@@ -282,6 +293,7 @@
 				35BBC4B4216A53610019B1CF /* ChannelVC.swift in Sources */,
 				35F4DA8B216A96CB003DFDC3 /* Constants.swift in Sources */,
 				3533CB01216B3987000EC92F /* CreateAccountVC.swift in Sources */,
+				356402D1216D37A10093032C /* AuthService.swift in Sources */,
 				35F4DA8D216AA2CB003DFDC3 /* LoginVC.swift in Sources */,
 				35BBC4B2216A532B0019B1CF /* ChatVC.swift in Sources */,
 				35F4DA88216A80EB003DFDC3 /* GradientView.swift in Sources */,
