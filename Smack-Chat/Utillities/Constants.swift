@@ -11,8 +11,11 @@ import Foundation
 typealias CompletionHandler = (_ Success:Bool) -> ()
 
 // URL Constants
-let BASE_URL = "https://some-smack-chat.herokuapp.com" + "/v1"   // app api domain from heroku, version 1
-let URL_REGISTER = "\(BASE_URL)/account/register"
+let BASE_URL_remote = "https://some-smack-chat.herokuapp.com" + "/v1"   // app api domain from heroku, version 1
+let BASE_URL_local = "http://localhost:3005" + "/v1"                    // app api domain from local, version 1
+let URL_REGISTER_remote = "\(BASE_URL_remote)/account/register"
+let URL_REGISTER_local = "\(BASE_URL_local)/account/register"
+let URL_REGISTER = URL_REGISTER_remote
 
 // Segues
 let TO_LOGIN = "ToLogin"
