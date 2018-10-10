@@ -83,12 +83,14 @@ class AuthService {
                 
                 // swiftyJSON way
                 guard let data = response.data else { return }
-                let json = try? JSON( data: data )
-                self.userEmail = json!["email"].stringValue
-                self.authToken = json!["token"].stringValue
-                
-                self.isLoggedIn = true
-                completion(true)
+                do {
+                    let json = try JSON(data: data)
+                    self.userEmail = json["email"].stringValue
+                    self.authToken = json["token"].stringValue
+                    self.isLoggedIn = true
+                    completion(true)
+                    }
+                catch { print("swiftyJSON trowed error, \(error)")  }
             } else {
                 completion(false)
                 debugPrint(response.result.error as Any)
