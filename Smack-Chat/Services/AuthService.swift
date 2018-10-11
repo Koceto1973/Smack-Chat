@@ -97,4 +97,42 @@ class AuthService {
             }
         }
     }
+    
+    func createUser( name:String, email:String, avatarName:String, avatarColor:String, completion: @escaping CompletionHandler ) {
+        let lowerCaseEmail = email.lowercased()
+        
+        let header = [
+            "Authorization" : "Bearer \(AuthService.instance.authToken)",
+            "Content-Type": "application/json; charset=utf-8"
+        ]
+        
+        let body = [
+            "name"  : name,
+            "email" : lowerCaseEmail,
+            "avatarName" : avatarName,
+            "avatarColor": avatarColor
+        ]
+        
+        Alamofire.request(URL_USER_ADD, method: .post, parameters: body, encoding: JSONEncoding.default, headers: header).responseJSON { (response) in
+            if response.result.error == nil {
+                // swiftyJSON way
+                guard let data = response.data else { return }
+                do {
+                    let json = try JSON(data: data)
+                    let id = json["_id"].stringValue
+                    let name = json["name"].stringValue
+                    let email = json["email"].stringValue
+                    let avatarName = json["avatarName"].stringValue
+                    let avatarColor = json["avatarColor"].stringValue
+                    
+                    UserDataService.instance.setUserData(id: id, name: name, email: email, avatarName: avatarName, avatarColor: avatarColor)
+                    completion(true)
+                }
+                catch { print("swiftyJSON trowed error, \(error)")  }
+            } else {
+                completion(false)
+                debugPrint(response.result.error as Any)
+            }
+        }
+    }
 }

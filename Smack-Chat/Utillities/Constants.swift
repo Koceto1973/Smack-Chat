@@ -22,6 +22,10 @@ let URL_LOGIN_remote = "\(BASE_URL_remote)/account/login"
 let URL_LOGIN_local = "\(BASE_URL_local)/account/login"
 let URL_LOGIN = URL_LOGIN_remote
 
+let URL_USER_ADD_remote = "\(BASE_URL_remote)/user/add"
+let URL_USER_ADD_local = "\(BASE_URL_local)/user/add"
+let URL_USER_ADD = URL_USER_ADD_remote
+
 // Headers
 let HEADER = [ "Content-Type": "application/json; charset=utf-8" ]
 
