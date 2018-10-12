@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3531FEE12171128300023991 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3531FEE02171128300023991 /* CircleImage.swift */; };
 		3533CB01216B3987000EC92F /* CreateAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3533CB00216B3987000EC92F /* CreateAccountVC.swift */; };
 		3563D83D215B72650093287C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3563D83C215B72650093287C /* AppDelegate.swift */; };
 		3563D842215B72650093287C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3563D840215B72650093287C /* Main.storyboard */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		1993CA8C98EE1FD5BBCCF26B /* Pods-Smack-Chat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smack-Chat.release.xcconfig"; path = "Pods/Target Support Files/Pods-Smack-Chat/Pods-Smack-Chat.release.xcconfig"; sourceTree = "<group>"; };
+		3531FEE02171128300023991 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
 		3533CB00216B3987000EC92F /* CreateAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountVC.swift; sourceTree = "<group>"; };
 		3563D839215B72650093287C /* Smack-Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smack-Chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3563D83C215B72650093287C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				35F4DA87216A80EB003DFDC3 /* GradientView.swift */,
 				35E091F1216E026500185217 /* RoundedButton.swift */,
 				3565D58B2170E46500F87A26 /* AvatarCell.swift */,
+				3531FEE02171128300023991 /* CircleImage.swift */,
 			);
 			name = View;
 			path = "New Group";
@@ -305,6 +308,7 @@
 				35BBC4B4216A53610019B1CF /* ChannelVC.swift in Sources */,
 				35E091F2216E026500185217 /* RoundedButton.swift in Sources */,
 				3565D58A2170DFDC00F87A26 /* AvatarPickerVC.swift in Sources */,
+				3531FEE12171128300023991 /* CircleImage.swift in Sources */,
 				35F4DA8B216A96CB003DFDC3 /* Constants.swift in Sources */,
 				35E091F4216F532B00185217 /* UserDataService.swift in Sources */,
 				3533CB01216B3987000EC92F /* CreateAccountVC.swift in Sources */,

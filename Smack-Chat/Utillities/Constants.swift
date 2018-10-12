@@ -26,6 +26,9 @@ let URL_USER_ADD_remote = "\(BASE_URL_remote)/user/add"
 let URL_USER_ADD_local = "\(BASE_URL_local)/user/add"
 let URL_USER_ADD = URL_USER_ADD_remote
 
+// Colors
+let smackPurplePlaceHoder = #colorLiteral(red: 0.2588235294, green: 0.3294117647, blue: 0.7254901961, alpha: 0.5)
+
 // Headers
 let HEADER = [ "Content-Type": "application/json; charset=utf-8" ]
 
