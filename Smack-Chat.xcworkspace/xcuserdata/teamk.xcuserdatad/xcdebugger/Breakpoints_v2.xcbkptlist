@@ -10,13 +10,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Smack-Chat/Services/AuthService.swift"
-            timestampString = "560954537.284577"
+            timestampString = "561043757.5650899"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "138"
             endingLineNumber = "138"
-            landmarkName = "createUser(name:email:avatarName:avatarColor:completion:)"
-            landmarkType = "7">
+            landmarkName = "AuthService"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

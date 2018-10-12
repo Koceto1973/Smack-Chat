@@ -41,7 +41,7 @@ class CreateAccountVC: UIViewController {
                         AuthService.instance.createUser(name: username, email: email, avatarName: self.avatarName, avatarColor: self.avatarColor, completion:
                             { (success) in
                             if success {
-                                print(UserDataService.instance.name, UserDataService.instance.avatarName)
+                                //print(UserDataService.instance.name, UserDataService.instance.avatarName)
                                 self.performSegue(withIdentifier: UNWIND, sender: nil)
                             }
                         })
@@ -51,6 +51,7 @@ class CreateAccountVC: UIViewController {
         }
     }
     @IBAction func chooseAvatarPressed(_ sender: Any) {
+        performSegue(withIdentifier: TO_AVATAR_PICKER, sender: nil)
     }
     @IBAction func generateBGColorPressed(_ sender: Any) {
     }

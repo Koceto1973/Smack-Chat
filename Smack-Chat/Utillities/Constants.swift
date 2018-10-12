@@ -16,7 +16,7 @@ let BASE_URL_local = "http://localhost:3005" + "/v1"                    // app a
 
 let URL_REGISTER_remote = "\(BASE_URL_remote)/account/register"
 let URL_REGISTER_local = "\(BASE_URL_local)/account/register"
-let URL_REGISTER = URL_REGISTER_remote
+var URL_REGISTER:String = URL_REGISTER_remote
 
 let URL_LOGIN_remote = "\(BASE_URL_remote)/account/login"
 let URL_LOGIN_local = "\(BASE_URL_local)/account/login"
@@ -33,6 +33,7 @@ let HEADER = [ "Content-Type": "application/json; charset=utf-8" ]
 let TO_LOGIN = "ToLogin"
 let TO_CREATE_ACCOUNT = "ToCreateAccount"
 let UNWIND = "UnwindToChannel"
+let TO_AVATAR_PICKER = "ToAvatarPicker"
 
 //User Defaults
 let TOKEN_KEY = "token"
