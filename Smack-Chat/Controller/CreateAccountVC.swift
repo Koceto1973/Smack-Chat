@@ -104,8 +104,7 @@ class CreateAccountVC: UIViewController, UITextFieldDelegate {
         
         passTxt.attributedPlaceholder = NSAttributedString(string: "password", attributes: [NSAttributedString.Key.foregroundColor:smackPurplePlaceHoder])
         
-        let tap = UIGestureRecognizer(target: self, action: #selector(CreateAccountVC.touchesBegan(_:with:)))
-        view.addGestureRecognizer(tap)
+        
     }
     
     func textFieldShouldReturn(_ textField:UITextField) -> Bool {
@@ -113,8 +112,5 @@ class CreateAccountVC: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
 }
 
