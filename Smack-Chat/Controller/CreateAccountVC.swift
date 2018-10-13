@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateAccountVC: UIViewController {
+class CreateAccountVC: UIViewController, UITextFieldDelegate {
     
     // Outlets
     @IBOutlet weak var usernameTxt: UITextField!    
@@ -24,6 +24,10 @@ class CreateAccountVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        usernameTxt.delegate = self
+        emailTxt.delegate = self
+        passTxt.delegate = self
         
         setupView()
     }
@@ -96,5 +100,18 @@ class CreateAccountVC: UIViewController {
         emailTxt.attributedPlaceholder = NSAttributedString(string: "email", attributes: [NSAttributedString.Key.foregroundColor:smackPurplePlaceHoder])
         
         passTxt.attributedPlaceholder = NSAttributedString(string: "password", attributes: [NSAttributedString.Key.foregroundColor:smackPurplePlaceHoder])
+        
+        let tap = UIGestureRecognizer(target: self, action: #selector(CreateAccountVC.touchesBegan(_:with:)))
+        view.addGestureRecognizer(tap)
+    }
+    
+    func textFieldShouldReturn(_ textField:UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 }
+
