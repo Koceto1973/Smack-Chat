@@ -111,6 +111,5 @@ class CreateAccountVC: UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-    
 }
 
