@@ -58,13 +58,15 @@ class CreateAccountVC: UIViewController, UITextFieldDelegate {
                     { (success) in
                     if success {
                         //print("user logged in with authToken \(AuthService.instance.authToken)")
-                        
-                        self.spinner.isHidden = true
-                        self.spinner.stopAnimating()
-                        
                         AuthService.instance.createUser(name: username, email: email, avatarName: self.avatarName, avatarColor: self.avatarColor, completion:
                             { (success) in
                             if success {
+                                
+                                self.spinner.isHidden = true
+                                self.spinner.stopAnimating()
+                                
+                                NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+                                
                                 //print(UserDataService.instance.name, UserDataService.instance.avatarName)
                                 self.performSegue(withIdentifier: UNWIND, sender: nil)
                             }
