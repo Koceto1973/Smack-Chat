@@ -1,27 +1,15 @@
-//
-//  ProfileVC.swift
-//  Smack-Chat
-//
-//  Created by К.К. on 14.10.18.
-//  Copyright © 2018 TeamK. All rights reserved.
-//
-
 import UIKit
 
 class ProfileVC: UIViewController {
     
     // Outlets
     @IBOutlet weak var profileImage: UIImageView!
-    
     @IBOutlet weak var userName: UILabel!
-    
     @IBOutlet weak var userEmail: UILabel!
-    
     @IBOutlet weak var bgView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupView()
     }
 

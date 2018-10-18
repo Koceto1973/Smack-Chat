@@ -146,7 +146,7 @@ class AuthService {
             
             UserDataService.instance.setUserData(id: id, name: name, email: email, avatarName: avatarName, avatarColor: avatarColor)
         }
-        catch { print("swiftyJSON trowed error, \(error)")  }
+        catch { print("swiftyJSON threw error, \(error)")  }
     }
     
 }
