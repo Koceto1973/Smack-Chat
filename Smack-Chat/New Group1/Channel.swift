@@ -8,6 +8,7 @@
 
 import Foundation
 
+// standard way, fewer items in model, more flexibility over parsing
 //struct Channel {
 //    public private(set) var channelTitle: String!
 //    public private(set) var channelDescription: String!
