@@ -35,7 +35,7 @@ let URL_GET_CHANNELS_local = "\(BASE_URL_local)/channel/"
 let URL_GET_CHANNELS = URL_GET_CHANNELS_remote
 
 // Colors
-let smackPurplePlaceHoder = #colorLiteral(red: 0.2588235294, green: 0.3294117647, blue: 0.7254901961, alpha: 0.5)
+let smackPurplePlaceholder = #colorLiteral(red: 0.2588235294, green: 0.3294117647, blue: 0.7254901961, alpha: 0.5)
 
 // Notifications
 let NOTIF_USER_DATA_DID_CHANGE = Notification.Name("notifUserDataChanged")
