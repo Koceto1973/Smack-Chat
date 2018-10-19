@@ -52,10 +52,65 @@ class AuthService {
         
         Alamofire.request(URL_REGISTER, method: .post, parameters: body, encoding: JSONEncoding.default, headers: HEADER).responseString { (response) in
             if response.result.error == nil {
+                // swiftyJSON way
+                guard let data = response.data else { return }
+                do {
+                    // reporting on successful registration
+                    guard let dataText = String(data: data, encoding: .utf8 ) else {return}
+                    if dataText.first != "{" {
+                        print( String(data: data, encoding: .utf8 )! )
+                    } else {
+                        let json = try JSON(data: data)
+                        print(json["message"])
+                    }
+                    
+                    completion(true)
+                }
+                catch { print("swiftyJSON threw error on registering user: \(error)")  }
                 completion(true)
             } else {
                 completion(false)
                 debugPrint(response.result.error as Any)
+            }
+        }
+    }
+    
+    func registerUser_( email:String, password:String, completion: @escaping CompletionHandler_ ) {
+        let lowerCaseEmail = email.lowercased()
+        
+        let body = [
+            "email" : lowerCaseEmail,
+            "password" : password
+        ]
+        
+        var responseMessage: String = ""
+        var responseCode: Int = 0
+        
+        Alamofire.request(URL_REGISTER, method: .post, parameters: body, encoding: JSONEncoding.default, headers: HEADER).responseString { (response) in
+            if response.result.error == nil {
+                // swiftyJSON way
+                guard let data = response.data else { return }
+                do {
+                    // reporting on successful registration
+                    guard var dataText = String(data: data, encoding: .utf8 ) else {return}
+                    
+                    if dataText.first != "{" {
+                        let json = try JSON(data: data)
+                        dataText = json["message"].stringValue
+                        responseCode = 1
+                    }
+                    
+                    responseMessage = dataText
+                    debugPrint(responseMessage)
+                    completion(true, responseMessage, responseCode)
+                } catch {
+                    debugPrint("swiftyJSON threw error on registering user: \(error)")
+                    completion(false,  "Server response is uncertain on registering user", -1)
+                }
+                
+            } else {
+                debugPrint(response.result.error as Any)
+                completion(false, "Server response is error on registering user", -1)
             }
         }
     }
@@ -85,12 +140,13 @@ class AuthService {
                 guard let data = response.data else { return }
                 do {
                     let json = try JSON(data: data)
-                    self.userEmail = json["email"].stringValue
+                    self.userEmail = json["user"].stringValue
                     self.authToken = json["token"].stringValue
                     self.isLoggedIn = true
+                        
                     completion(true)
                     }
-                catch { print("swiftyJSON trowed error, \(error)")  }
+                catch { print("swiftyJSON threw error, \(error)")  }
             } else {
                 completion(false)
                 debugPrint(response.result.error as Any)

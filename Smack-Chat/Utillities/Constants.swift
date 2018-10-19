@@ -8,7 +8,8 @@
 
 import Foundation
 
-typealias CompletionHandler = (_ Success:Bool) -> ()
+typealias CompletionHandler  = (_ Success:Bool) -> ()
+typealias CompletionHandler_ = (_ Success: Bool, _ responseMessage: String, _ responseCode: Int)->()
 
 // URL Constants
 let BASE_URL_remote = "https://some-smack-chat.herokuapp.com" + "/v1"   // app api domain from heroku, version 1
@@ -18,7 +19,7 @@ let BASE_URL = BASE_URL_remote
 var URL_REGISTER:String = "\(BASE_URL)/account/register"
 let URL_LOGIN = "\(BASE_URL)/account/login"
 let URL_USER_ADD = "\(BASE_URL)/user/add"
-let URL_USER_BY_EMAIL = "\(BASE_URL)/user/byEmail/"
+let URL_USER_BY_EMAIL = "\(BASE_URL)//user/byEmail/"
 let URL_GET_CHANNELS = "\(BASE_URL)/channel/"
 
 // Colors

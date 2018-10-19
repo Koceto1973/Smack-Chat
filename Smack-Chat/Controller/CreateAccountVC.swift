@@ -16,23 +16,37 @@ class CreateAccountVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passTxt: UITextField!
     @IBOutlet weak var userImg: UIImageView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
+    @IBOutlet weak var infoBar: UILabel!
     
     // Variables
-    var avatarName = "profileDefault"
-    var avatarColor = "[0.5, 0.5, 0.5, 1]"
+    var isClosable: Bool = true
+    var avatarName: String = ""
+    var avatarColor: String = ""
     var bgColor:UIColor?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // text fields setup
         usernameTxt.delegate = self
         emailTxt.delegate = self
         passTxt.delegate = self
         
-        setupView()
+        // precaution for closed view of CreateAccountVC after avatar is picked
+        UserDataService.instance.setAvatarName(avatarName: "")
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        isClosable = true
+        infoBar.text = ""
+        spinner.isHidden = true
+        avatarName = "profileDefault"
+        avatarColor = "[0.5, 0.5, 0.5, 1]"
+        
+        // placeholders setup
+        usernameTxt.attributedPlaceholder = NSAttributedString(string: "username", attributes: [NSAttributedString.Key.foregroundColor:smackPurplePlaceholder])
+        emailTxt.attributedPlaceholder = NSAttributedString(string: "email", attributes: [NSAttributedString.Key.foregroundColor:smackPurplePlaceholder])
+        passTxt.attributedPlaceholder = NSAttributedString(string: "password", attributes: [NSAttributedString.Key.foregroundColor:smackPurplePlaceholder])
+        
         if UserDataService.instance.avatarName != "" {
             userImg.image = UIImage(named: UserDataService.instance.avatarName )
             avatarName = UserDataService.instance.avatarName
@@ -42,6 +56,15 @@ class CreateAccountVC: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // textfields keyboard dismissal by side touches
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    // textfields keyboard dismissal by return key
+    func textFieldShouldReturn(_ textField:UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
     @IBAction func createAccountPressed(_ sender: Any) {
         spinner.isHidden = false
@@ -51,13 +74,17 @@ class CreateAccountVC: UIViewController, UITextFieldDelegate {
         guard let email = emailTxt.text, emailTxt.text != "" else { return }
         guard let pass = passTxt.text, passTxt.text != "" else { return }
         
+        AuthService.instance.registerUser_(email: email, password: pass){ (success,responseMessage,responseCode) in
+            if success {
+                
+            }
+        }
+        
         AuthService.instance.registerUser(email: email, password: pass) { (success) in
             if success {
-                //print("user registered!")
                 AuthService.instance.loginUser(email: email, password: pass, completion:
                     { (success) in
                     if success {
-                        //print("user logged in with authToken \(AuthService.instance.authToken)")
                         AuthService.instance.createUser(name: username, email: email, avatarName: self.avatarName, avatarColor: self.avatarColor, completion:
                             { (success) in
                             if success {
@@ -67,7 +94,6 @@ class CreateAccountVC: UIViewController, UITextFieldDelegate {
                                 
                                 NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
                                 
-                                //print(UserDataService.instance.name, UserDataService.instance.avatarName)
                                 self.performSegue(withIdentifier: UNWIND, sender: nil)
                             }
                         })
@@ -76,40 +102,31 @@ class CreateAccountVC: UIViewController, UITextFieldDelegate {
             }
         }
     }
+    
     @IBAction func chooseAvatarPressed(_ sender: Any) {
         performSegue(withIdentifier: TO_AVATAR_PICKER, sender: nil)
     }
+    
     @IBAction func generateBGColorPressed(_ sender: Any) {
         let r = CGFloat(arc4random_uniform(255)) / 255
         let g = CGFloat(arc4random_uniform(255)) / 255
         let b = CGFloat(arc4random_uniform(255)) / 255
         
         bgColor = UIColor(red: r, green: g, blue: b, alpha: 1)
-        avatarColor = "[\(r),\(g),\(b),1]"
-        UIView.animate(withDuration: 0.2) {
+        UIView.animate(withDuration: 0.5) {
             self.userImg.backgroundColor = self.bgColor
         }
         
+        avatarColor = "[\(r),\(g),\(b),1]"  // ready for user creation
+        
     }
+   
     @IBAction func ClosePressed(_ sender: Any) {
-        performSegue(withIdentifier: UNWIND, sender: nil)
-    }
-    
-    func setupView() {
-        spinner.isHidden = true
-        
-        usernameTxt.attributedPlaceholder = NSAttributedString(string: "username", attributes: [NSAttributedString.Key.foregroundColor:smackPurplePlaceholder])
-        
-        emailTxt.attributedPlaceholder = NSAttributedString(string: "email", attributes: [NSAttributedString.Key.foregroundColor:smackPurplePlaceholder])
-        
-        passTxt.attributedPlaceholder = NSAttributedString(string: "password", attributes: [NSAttributedString.Key.foregroundColor:smackPurplePlaceholder])
-        
-        
-    }
-    
-    func textFieldShouldReturn(_ textField:UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
+        if isClosable {
+            performSegue(withIdentifier: UNWIND, sender: nil)
+        } else {
+            infoBar.text = "Close button is temporarily disabled."
+        }
     }
 }
 

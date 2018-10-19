@@ -22,14 +22,13 @@ class ChatVC: UIViewController {
         self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
         
         if AuthService.instance.isLoggedIn {
+                print("\n someone with email \n \(AuthService.instance.userEmail) \n and authToken \n \(AuthService.instance.userEmail) \n is logged in \n")
             AuthService.instance.findUserByEmail { (success) in
                 NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
             }
         }
         
-        // testing MessageService
-        MessageService.instance.findAllChannels { (success) in
-             // ...
-        }
+        // testing MessageService ... not working if no channels at all
+        // MessageService.instance.findAllChannels { (success) in    }
     }
 }
