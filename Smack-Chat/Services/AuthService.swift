@@ -154,6 +154,59 @@ class AuthService {
         }
     }
     
+    func loginUser_( email:String, password:String, completion: @escaping CompletionHandler_) {
+        let lowerCaseEmail = email.lowercased()
+        
+        let body = [
+            "email" : lowerCaseEmail,
+            "password" : password
+        ]
+        
+        var responseMessage: String = ""
+        var responseCode: Int = 0
+        
+        Alamofire.request(URL_LOGIN, method: .post, parameters: body, encoding: JSONEncoding.default, headers: HEADER).responseJSON { (response) in
+            if response.result.error == nil {
+                
+                // standard way
+                //                if let json = response.result.value as? Dictionary<String,Any> {
+                //                    if let email = json["user"] as? String {
+                //                        self.userEmail = email
+                //                    }
+                //                    if let token = json["token"] as? String {
+                //                        self.authToken = token
+                //                    }
+                //                }
+                
+                // swiftyJSON way
+                guard let data = response.data else { return }
+                do {
+                    let json = try JSON(data: data)
+                    self.userEmail = json["user"].stringValue
+                    self.authToken = json["token"].stringValue
+                    self.isLoggedIn = true
+                    
+                    responseMessage = "user login confirmed"
+                    debugPrint("\n\(responseMessage)\n")
+                    completion(true,responseMessage,responseCode)
+                }
+                catch {
+                    responseCode = -1
+                    responseMessage = "server response parsing error on login, try again"
+                    debugPrint("\n\(responseMessage)\n")
+                    debugPrint("swiftyJSON threw error, \(error)")
+                    completion(true,responseMessage,responseCode)
+                }
+            } else {
+                responseCode = -1
+                responseMessage = "server response error on login, try again"
+                debugPrint("\n\(responseMessage)\n")
+                debugPrint(response.result.error as Any)
+                completion(false,responseMessage,responseCode)
+            }
+        }
+    }
+    
     func createUser( name:String, email:String, avatarName:String, avatarColor:String, completion: @escaping CompletionHandler ) {
         let lowerCaseEmail = email.lowercased()
         
@@ -173,6 +226,38 @@ class AuthService {
             } else {
                 completion(false)
                 debugPrint(response.result.error as Any)
+            }
+        }
+    }
+    
+    func createUser_( name:String, email:String, avatarName:String, avatarColor:String, completion: @escaping CompletionHandler_ ) {
+        let lowerCaseEmail = email.lowercased()
+        
+        let body = [
+            "name"  : name,
+            "email" : lowerCaseEmail,
+            "avatarName" : avatarName,
+            "avatarColor": avatarColor
+        ]
+        
+        var responseCode = 0
+        var responseMessage = ""
+        
+        Alamofire.request(URL_USER_ADD, method: .post, parameters: body, encoding: JSONEncoding.default, headers: BEARER_HEADER).responseJSON { (response) in
+            if response.result.error == nil {
+                // swiftyJSON way
+                guard let data = response.data else { return }
+                self.setUserInfo(data:data)
+                
+                responseMessage = "user created"
+                debugPrint("\n\(responseMessage)\n")
+                completion(true,responseMessage,responseCode)
+            } else {
+                responseCode = -1
+                responseMessage = "server error on user creation, try again"
+                debugPrint("\n\(responseMessage)\n")
+                debugPrint(response.result.error as Any)
+                completion(true,responseMessage,responseCode)
             }
         }
     }

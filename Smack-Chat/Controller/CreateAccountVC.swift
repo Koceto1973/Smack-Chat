@@ -67,8 +67,6 @@ class CreateAccountVC: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func createAccountPressed(_ sender: Any) {
-        spinner.isHidden = false
-        spinner.startAnimating()
         
         let usernameCheck = TextFieldCheckService.instance.usernameCheck(username: usernameTxt.text)
         if !usernameCheck.0 {
@@ -93,30 +91,36 @@ class CreateAccountVC: UIViewController, UITextFieldDelegate {
         
         infoBar.text = ""  // clear input guidance on correct input
         
+        spinner.isHidden = false
+        spinner.startAnimating()
+        
         AuthService.instance.registerUser_(email: emailTxt.text!, password: passTxt.text!){ (success,responseMessage,responseCode) in
             if !success {
                 self.infoBar.text = responseMessage
+                self.spinner.isHidden = true
+                self.spinner.stopAnimating()
                 return
             } else if responseCode == 1 {
                 self.infoBar.text = responseMessage + ", you can login."
+                self.spinner.isHidden = true
+                self.spinner.stopAnimating()
                 return
             } else {
-                
-            }
-        }
-        
-            AuthService.instance.registerUser(email: self.emailTxt.text!, password: self.passTxt.text!) { (success) in
-            if success {
-                AuthService.instance.loginUser(email: self.emailTxt.text!, password: self.passTxt.text!, completion:
-                    { (success) in
-                    if success {
-                        AuthService.instance.createUser(name: self.usernameTxt.text!, email: self.emailTxt.text!, avatarName: self.avatarName, avatarColor: self.avatarColor, completion:
-                            { (success) in
-                            if success {
-                                
-                                self.spinner.isHidden = true
-                                self.spinner.stopAnimating()
-                                
+                AuthService.instance.loginUser_(email: self.emailTxt.text!, password: self.passTxt.text!, completion: { (success, responseMessage, responseCode) in
+                    if responseCode == -1 {
+                        self.infoBar.text = responseMessage
+                        self.spinner.isHidden = true
+                        self.spinner.stopAnimating()
+                        return
+                    } else {
+                        NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+                        AuthService.instance.createUser_(name: self.usernameTxt.text!, email: self.emailTxt.text!, avatarName: self.avatarName, avatarColor: self.avatarColor, completion: { (success, responseMessage, responseCode) in
+                            self.spinner.isHidden = true
+                            self.spinner.stopAnimating()
+                            if !success {
+                                self.infoBar.text = responseMessage
+                                return
+                            } else {
                                 NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
                                 
                                 self.performSegue(withIdentifier: UNWIND, sender: nil)
@@ -126,6 +130,29 @@ class CreateAccountVC: UIViewController, UITextFieldDelegate {
                 })
             }
         }
+        
+        // original version
+//        AuthService.instance.registerUser(email: self.emailTxt.text!, password: self.passTxt.text!) { (success) in
+//            if success {
+//                AuthService.instance.loginUser(email: self.emailTxt.text!, password: self.passTxt.text!, completion:
+//                    { (success) in
+//                    if success {
+//                        AuthService.instance.createUser(name: self.usernameTxt.text!, email: self.emailTxt.text!, avatarName: self.avatarName, avatarColor: self.avatarColor, completion:
+//                            { (success) in
+//                            if success {
+//
+//                                self.spinner.isHidden = true
+//                                self.spinner.stopAnimating()
+//
+//                                NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+//
+//                                self.performSegue(withIdentifier: UNWIND, sender: nil)
+//                            }
+//                        })
+//                    }
+//                })
+//            }
+//        }
     }
     
     @IBAction func chooseAvatarPressed(_ sender: Any) {
