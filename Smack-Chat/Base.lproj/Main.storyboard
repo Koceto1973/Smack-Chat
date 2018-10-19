@@ -418,11 +418,11 @@
                                 <color key="color" red="0.25882352939999997" green="0.3294117647" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhf-DV-xrd">
-                                <rect key="frame" x="20" y="642" width="335" height="20"/>
+                                <rect key="frame" x="5" y="642" width="365" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="v9Z-hp-vSl"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -437,8 +437,8 @@
                             <constraint firstItem="8gL-g0-aEB" firstAttribute="centerX" secondItem="tF3-FR-9tF" secondAttribute="centerX" id="NJM-EZ-cft"/>
                             <constraint firstItem="B7n-5E-ke8" firstAttribute="centerX" secondItem="tF3-FR-9tF" secondAttribute="centerX" id="NkW-VJ-W8h"/>
                             <constraint firstItem="x4W-ta-Oco" firstAttribute="centerX" secondItem="tF3-FR-9tF" secondAttribute="centerX" id="Oyl-XC-bfC"/>
-                            <constraint firstItem="nhf-DV-xrd" firstAttribute="leading" secondItem="6pl-i1-Pdf" secondAttribute="leading" constant="20" id="ZTP-RB-EBc"/>
-                            <constraint firstItem="6pl-i1-Pdf" firstAttribute="trailing" secondItem="nhf-DV-xrd" secondAttribute="trailing" constant="20" id="cyk-c2-wvD"/>
+                            <constraint firstItem="nhf-DV-xrd" firstAttribute="leading" secondItem="6pl-i1-Pdf" secondAttribute="leading" constant="5" id="ZTP-RB-EBc"/>
+                            <constraint firstItem="6pl-i1-Pdf" firstAttribute="trailing" secondItem="nhf-DV-xrd" secondAttribute="trailing" constant="5" id="cyk-c2-wvD"/>
                             <constraint firstItem="7NF-BJ-BXA" firstAttribute="top" secondItem="6pl-i1-Pdf" secondAttribute="top" id="geL-k0-7Kw"/>
                             <constraint firstItem="6pl-i1-Pdf" firstAttribute="trailing" secondItem="7NF-BJ-BXA" secondAttribute="trailing" constant="16" id="hAQ-Vk-8nK"/>
                             <constraint firstItem="6pl-i1-Pdf" firstAttribute="bottom" secondItem="XF2-Um-1Vv" secondAttribute="bottom" constant="50" id="jSH-16-7Og"/>

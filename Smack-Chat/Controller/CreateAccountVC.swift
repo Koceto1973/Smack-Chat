@@ -70,22 +70,47 @@ class CreateAccountVC: UIViewController, UITextFieldDelegate {
         spinner.isHidden = false
         spinner.startAnimating()
         
-        guard let username  = usernameTxt.text, usernameTxt.text != "" else { return }
-        guard let email = emailTxt.text, emailTxt.text != "" else { return }
-        guard let pass = passTxt.text, passTxt.text != "" else { return }
+        let usernameCheck = TextFieldCheckService.instance.usernameCheck(username: usernameTxt.text)
+        if !usernameCheck.0 {
+            debugPrint("\n\(usernameCheck.1)\n")
+            infoBar.text = usernameCheck.1
+            return
+        }
         
-        AuthService.instance.registerUser_(email: email, password: pass){ (success,responseMessage,responseCode) in
-            if success {
+        let emailCheck = TextFieldCheckService.instance.emailCheck(email: emailTxt.text)
+        if !emailCheck.0 {
+            debugPrint("\n\(emailCheck.1)\n")
+            infoBar.text = emailCheck.1
+            return
+        }
+        
+        let passwordCheck = TextFieldCheckService.instance.passwordCheck(password: passTxt.text)
+        if !passwordCheck.0 {
+            debugPrint("\n\(passwordCheck.1)\n")
+            infoBar.text = passwordCheck.1
+            return
+        }
+        
+        infoBar.text = ""  // clear input guidance on correct input
+        
+        AuthService.instance.registerUser_(email: emailTxt.text!, password: passTxt.text!){ (success,responseMessage,responseCode) in
+            if !success {
+                self.infoBar.text = responseMessage
+                return
+            } else if responseCode == 1 {
+                self.infoBar.text = responseMessage + ", you can login."
+                return
+            } else {
                 
             }
         }
         
-        AuthService.instance.registerUser(email: email, password: pass) { (success) in
+            AuthService.instance.registerUser(email: self.emailTxt.text!, password: self.passTxt.text!) { (success) in
             if success {
-                AuthService.instance.loginUser(email: email, password: pass, completion:
+                AuthService.instance.loginUser(email: self.emailTxt.text!, password: self.passTxt.text!, completion:
                     { (success) in
                     if success {
-                        AuthService.instance.createUser(name: username, email: email, avatarName: self.avatarName, avatarColor: self.avatarColor, completion:
+                        AuthService.instance.createUser(name: self.usernameTxt.text!, email: self.emailTxt.text!, avatarName: self.avatarName, avatarColor: self.avatarColor, completion:
                             { (success) in
                             if success {
                                 
@@ -117,7 +142,7 @@ class CreateAccountVC: UIViewController, UITextFieldDelegate {
             self.userImg.backgroundColor = self.bgColor
         }
         
-        avatarColor = "[\(r),\(g),\(b),1]"  // ready for user creation
+        avatarColor = "[\(r),\(g),\(b),1]"  // ready for user creation 
         
     }
    
