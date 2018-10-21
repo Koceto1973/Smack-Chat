@@ -28,7 +28,7 @@ class LoginVC: UIViewController {
         guard let email = userEmailTxt.text, userEmailTxt.text != "" else { return }
         guard let pass = passwordTxt.text, passwordTxt.text != "" else { return }
             
-        AuthService.instance.loginUser(email: email, password: pass) { (success) in
+        AuthService.instance.loginUser_(email: email, password: pass) { (success, responseMessage, responseCode) in
             if success {
                 AuthService.instance.findUserByEmail(completion: { (success) in
                     if success {

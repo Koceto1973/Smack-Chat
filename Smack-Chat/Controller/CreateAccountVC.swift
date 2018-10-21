@@ -68,10 +68,13 @@ class CreateAccountVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func createAccountPressed(_ sender: Any) {
         
+        isClosable = false
+        
         let usernameCheck = TextFieldCheckService.instance.usernameCheck(username: usernameTxt.text)
         if !usernameCheck.0 {
             debugPrint("\n\(usernameCheck.1)\n")
             infoBar.text = usernameCheck.1
+            isClosable = true
             return
         }
         
@@ -79,6 +82,7 @@ class CreateAccountVC: UIViewController, UITextFieldDelegate {
         if !emailCheck.0 {
             debugPrint("\n\(emailCheck.1)\n")
             infoBar.text = emailCheck.1
+            isClosable = true
             return
         }
         
@@ -86,6 +90,7 @@ class CreateAccountVC: UIViewController, UITextFieldDelegate {
         if !passwordCheck.0 {
             debugPrint("\n\(passwordCheck.1)\n")
             infoBar.text = passwordCheck.1
+            isClosable = true
             return
         }
         
@@ -95,15 +100,17 @@ class CreateAccountVC: UIViewController, UITextFieldDelegate {
         spinner.startAnimating()
         
         AuthService.instance.registerUser_(email: emailTxt.text!, password: passTxt.text!){ (success,responseMessage,responseCode) in
-            if !success {
+            if !success &&  responseCode != 1 {
                 self.infoBar.text = responseMessage
                 self.spinner.isHidden = true
                 self.spinner.stopAnimating()
+                self.isClosable = true
                 return
-            } else if responseCode == 1 {
+            } else if !success &&  responseCode == 1 {
                 self.infoBar.text = responseMessage + ", you can login."
                 self.spinner.isHidden = true
                 self.spinner.stopAnimating()
+                self.isClosable = true
                 return
             } else {
                 AuthService.instance.loginUser_(email: self.emailTxt.text!, password: self.passTxt.text!, completion: { (success, responseMessage, responseCode) in
@@ -111,21 +118,31 @@ class CreateAccountVC: UIViewController, UITextFieldDelegate {
                         self.infoBar.text = responseMessage
                         self.spinner.isHidden = true
                         self.spinner.stopAnimating()
+                        self.isClosable = true
                         return
                     } else {
-                        NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
-                        AuthService.instance.createUser_(name: self.usernameTxt.text!, email: self.emailTxt.text!, avatarName: self.avatarName, avatarColor: self.avatarColor, completion: { (success, responseMessage, responseCode) in
+                        if !success {
+                            self.infoBar.text = responseMessage
                             self.spinner.isHidden = true
                             self.spinner.stopAnimating()
-                            if !success {
-                                self.infoBar.text = responseMessage
-                                return
-                            } else {
-                                NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
-                                
-                                self.performSegue(withIdentifier: UNWIND, sender: nil)
-                            }
-                        })
+                            self.isClosable = true
+                            return
+                        } else {
+                            NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+                            AuthService.instance.createUser_(name: self.usernameTxt.text!, email: self.emailTxt.text!, avatarName: self.avatarName, avatarColor: self.avatarColor, completion: { (success, responseMessage, responseCode) in
+                                self.spinner.isHidden = true
+                                self.spinner.stopAnimating()
+                                if !success {
+                                    self.infoBar.text = responseMessage
+                                    self.isClosable = true
+                                    return
+                                } else {
+                                    NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+                                    self.isClosable = true
+                                    self.performSegue(withIdentifier: UNWIND, sender: nil)
+                                }
+                            })
+                        }
                     }
                 })
             }
