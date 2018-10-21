@@ -246,12 +246,23 @@
                                 <rect key="frame" x="169" y="200" width="37" height="37"/>
                                 <color key="color" red="0.25882352939999997" green="0.3294117647" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZME-nc-nxq">
+                                <rect key="frame" x="5" y="637" width="365" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="LMp-8i-4wF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="7Q9-Yr-9Ey" firstAttribute="centerX" secondItem="Mlp-5e-hcW" secondAttribute="centerX" id="9en-Ju-Cjj"/>
                             <constraint firstItem="usU-gz-huk" firstAttribute="top" secondItem="DLY-gw-N7f" secondAttribute="top" id="HKg-ER-YUd"/>
+                            <constraint firstItem="ZME-nc-nxq" firstAttribute="leading" secondItem="DLY-gw-N7f" secondAttribute="leading" constant="5" id="IXz-47-cwf"/>
                             <constraint firstItem="DLY-gw-N7f" firstAttribute="trailing" secondItem="usU-gz-huk" secondAttribute="trailing" constant="16" id="Qdg-1C-0BU"/>
+                            <constraint firstItem="DLY-gw-N7f" firstAttribute="trailing" secondItem="ZME-nc-nxq" secondAttribute="trailing" constant="5" id="SHQ-9e-efx"/>
                             <constraint firstItem="v1B-2O-gSJ" firstAttribute="centerX" secondItem="Mlp-5e-hcW" secondAttribute="centerX" id="Yra-ow-YAh"/>
                             <constraint firstItem="go4-M6-YU9" firstAttribute="centerX" secondItem="Mlp-5e-hcW" secondAttribute="centerX" id="bXQ-Zw-0Fh"/>
                             <constraint firstItem="ckP-3K-Q28" firstAttribute="top" secondItem="KBz-0n-mbl" secondAttribute="bottom" constant="40" id="djf-5A-NwC"/>
@@ -259,15 +270,17 @@
                             <constraint firstItem="ckP-3K-Q28" firstAttribute="centerX" secondItem="Mlp-5e-hcW" secondAttribute="centerX" id="jRL-Iu-g5Z"/>
                             <constraint firstItem="cyd-wU-UXn" firstAttribute="centerX" secondItem="Mlp-5e-hcW" secondAttribute="centerX" id="khk-3w-XrO"/>
                             <constraint firstItem="cyd-wU-UXn" firstAttribute="top" secondItem="7Q9-Yr-9Ey" secondAttribute="bottom" constant="40" id="neu-vb-kvX"/>
+                            <constraint firstItem="DLY-gw-N7f" firstAttribute="bottom" secondItem="ZME-nc-nxq" secondAttribute="bottom" constant="10" id="sgf-2G-YoC"/>
                             <constraint firstItem="go4-M6-YU9" firstAttribute="centerY" secondItem="Mlp-5e-hcW" secondAttribute="centerY" constant="-115" id="t6C-os-bPs"/>
                             <constraint firstItem="v1B-2O-gSJ" firstAttribute="top" secondItem="ckP-3K-Q28" secondAttribute="bottom" id="wMr-Bc-2O4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DLY-gw-N7f"/>
                     </view>
                     <connections>
-                        <outlet property="passwordTxt" destination="KBz-0n-mbl" id="A1K-9Z-8s8"/>
+                        <outlet property="emailTxt" destination="S0Y-KG-aic" id="eht-cI-H8R"/>
+                        <outlet property="infoBar" destination="ZME-nc-nxq" id="o4O-8a-Bys"/>
+                        <outlet property="passTxt" destination="KBz-0n-mbl" id="A1K-9Z-8s8"/>
                         <outlet property="spinner" destination="go4-M6-YU9" id="4fh-1c-ubj"/>
-                        <outlet property="userEmailTxt" destination="S0Y-KG-aic" id="eht-cI-H8R"/>
                         <segue destination="Qm6-b3-9tp" kind="show" identifier="ToCreateAccount" id="ewL-JH-X5X"/>
                     </connections>
                 </viewController>

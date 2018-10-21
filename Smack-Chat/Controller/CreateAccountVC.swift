@@ -147,30 +147,7 @@ class CreateAccountVC: UIViewController, UITextFieldDelegate {
                 })
             }
         }
-        
-        // original version
-//        AuthService.instance.registerUser(email: self.emailTxt.text!, password: self.passTxt.text!) { (success) in
-//            if success {
-//                AuthService.instance.loginUser(email: self.emailTxt.text!, password: self.passTxt.text!, completion:
-//                    { (success) in
-//                    if success {
-//                        AuthService.instance.createUser(name: self.usernameTxt.text!, email: self.emailTxt.text!, avatarName: self.avatarName, avatarColor: self.avatarColor, completion:
-//                            { (success) in
-//                            if success {
-//
-//                                self.spinner.isHidden = true
-//                                self.spinner.stopAnimating()
-//
-//                                NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
-//
-//                                self.performSegue(withIdentifier: UNWIND, sender: nil)
-//                            }
-//                        })
-//                    }
-//                })
-//            }
-//        }
-    }
+   }
     
     @IBAction func chooseAvatarPressed(_ sender: Any) {
         performSegue(withIdentifier: TO_AVATAR_PICKER, sender: nil)
