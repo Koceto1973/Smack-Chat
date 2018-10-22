@@ -49,7 +49,7 @@ class AddChannelVC: UIViewController, UITextFieldDelegate {
         guard let channelDescription = channelDescriptionText.text, channelDescriptionText.text != "" else {return}
         SocketService.instance.addChannel(channelName: channelName, channelDescription: channelDescription) { (success) in
             if success {
-                self.dismiss(animated: true, completion: nil)
+                self.closeModalPressed(_:AnyObject.self)
             }
         }
     }

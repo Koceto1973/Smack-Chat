@@ -59,6 +59,8 @@ class LoginVC: UIViewController, UITextFieldDelegate  {
         if !emailCheck.0 {
             debugPrint("\n\(emailCheck.1)\n")
             infoBar.text = emailCheck.1
+            self.spinner.isHidden = true
+            self.spinner.stopAnimating()
             isClosable = true
             return
         }
@@ -67,6 +69,8 @@ class LoginVC: UIViewController, UITextFieldDelegate  {
         if !passwordCheck.0 {
             debugPrint("\n\(passwordCheck.1)\n")
             infoBar.text = passwordCheck.1
+            self.spinner.isHidden = true
+            self.spinner.stopAnimating()
             isClosable = true
             return
         }
@@ -80,19 +84,19 @@ class LoginVC: UIViewController, UITextFieldDelegate  {
                         self.spinner.stopAnimating()
                         self.dismiss(animated: true, completion: nil)
                     } else {
-                        debugPrint("\nLogin data process error, try again.\n")
+                        debugPrint("Login data process error, try again.")
                         self.infoBar.text = "Login process error, try again."
                         self.spinner.isHidden = true
                         self.spinner.stopAnimating()
                     }
                 })
             } else if responseCode == 1 {
-                debugPrint("\nEmail/Password mismatched.\n")
+                debugPrint("Email/Password mismatched.")
                 self.infoBar.text = "Email/Password mismatched."
                 self.spinner.isHidden = true
                 self.spinner.stopAnimating()
             } else {  // responseCode = -1
-                debugPrint("\nServer response error.\n")
+                debugPrint("Server response error.")
                 self.infoBar.text = "Server response error."
                 self.spinner.isHidden = true
                 self.spinner.stopAnimating()
