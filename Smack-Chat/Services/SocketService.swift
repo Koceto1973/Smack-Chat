@@ -35,12 +35,13 @@ class SocketService: NSObject {
     
     // api confirmation for channel creation
     func getChannel( completion: @escaping CompletionHandler){
-        socket.on("channelCreated"){ (dataArray, acknowledge) in
+        socket.on("channelCreated"){ (dataArray, acknowledgement) in
             guard let channelName = dataArray[0] as? String else {return}
-            guard let channelDescription = dataArray[0] as? String else {return}
-            guard let channelId = dataArray[0] as? String else {return}
+            guard let channelDescription = dataArray[1] as? String else {return}
+            guard let channelId = dataArray[2] as? String else {return}
             
             let newChannel = Channel( _id: channelId, name: channelName, description: channelDescription, __v: nil )
+            
             MessageService.instance.channels.append(newChannel)
             
             completion(true)
