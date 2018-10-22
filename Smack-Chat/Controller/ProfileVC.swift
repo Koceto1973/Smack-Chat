@@ -29,7 +29,7 @@ class ProfileVC: UIViewController {
         profileImage.backgroundColor = UserDataService.instance.returnUIColor(components: UserDataService.instance.avatarColor)
         
         let closeTouch = UITapGestureRecognizer(target: self, action: #selector(ProfileVC.closeTap(_:)))
-        bgView.addGestureRecognizer(closeTouch)
+        //bgView.addGestureRecognizer(closeTouch)
     }
     
     @objc func closeTap(_ recognizer: UITapGestureRecognizer){

@@ -160,13 +160,13 @@ class AuthService {
                 responseMessage = "server error on user creation, try again"
                 debugPrint("\n\(responseMessage)\n")
                 debugPrint(response.result.error as Any)
-                completion(true,responseMessage,responseCode)
+                completion(false,responseMessage,responseCode)
             }
         }
     }
     
     func findUserByEmail(completion: @escaping CompletionHandler){
-        Alamofire.request("\(URL_USER_BY_EMAIL)\(userEmail)", method: .post, parameters: nil, encoding: JSONEncoding.default, headers: BEARER_HEADER).responseJSON { (response) in
+        Alamofire.request("\(URL_USER_BY_EMAIL)\(userEmail)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: BEARER_HEADER).responseJSON { (response) in
             if response.result.error == nil {
                 // swiftyJSON way
                 guard let data = response.data else { return }
