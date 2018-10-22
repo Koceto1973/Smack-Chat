@@ -14,7 +14,8 @@ class ProfileVC: UIViewController {
     }
 
     @IBAction func closeModalPressed(_ sender: Any) {
-        dismiss(animated: true, completion: nil)    }
+        dismiss(animated: true, completion: nil)
+    }
     
     @IBAction func logoutPressed(_ sender: Any) {
         UserDataService.instance.logoutUser()

@@ -8,17 +8,20 @@
 
 import UIKit
 
-class AddChannelVC: UIViewController {
+class AddChannelVC: UIViewController, UITextFieldDelegate {
     
     // Outlets
-    @IBOutlet weak var nameText: UITextField!
+    @IBOutlet weak var channelNameText: UITextField!
     @IBOutlet weak var channelDescriptionText: UITextField!
     @IBOutlet weak var bgView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
+        channelNameText.delegate = self
+        channelDescriptionText.delegate = self
+        
         setupView()
     }
     
@@ -26,20 +29,23 @@ class AddChannelVC: UIViewController {
         let closeTouch = UITapGestureRecognizer(target: self, action: #selector(AddChannelVC.closeTap(_:)))
         bgView.addGestureRecognizer(closeTouch)
         
-        nameText.attributedPlaceholder = NSAttributedString(string: "name", attributes: [NSAttributedString.Key.foregroundColor : smackPurplePlaceholder])
+        channelNameText.attributedPlaceholder = NSAttributedString(string: "name", attributes: [NSAttributedString.Key.foregroundColor : smackPurplePlaceholder])
+        
         channelDescriptionText.attributedPlaceholder = NSAttributedString(string: "description", attributes: [NSAttributedString.Key.foregroundColor : smackPurplePlaceholder])
     }
     
-    @objc func closeTap(_ recognizer: UIGestureRecognizer) {
-        dismiss(animated: true, completion: nil)
+    // textfields keyboard dismissal by side touches
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
-
-    @IBAction func closeModalPressed(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+    // textfields keyboard dismissal by return key
+    func textFieldShouldReturn(_ textField:UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
-   
+    
     @IBAction func createChannelPressed(_ sender: Any) {
-        guard let channelName = nameText.text, nameText.text != "" else {return}
+        guard let channelName = channelNameText.text, channelNameText.text != "" else {return}
         guard let channelDescription = channelDescriptionText.text, channelDescriptionText.text != "" else {return}
         SocketService.instance.addChannel(channelName: channelName, channelDescription: channelDescription) { (success) in
             if success {
@@ -48,4 +54,11 @@ class AddChannelVC: UIViewController {
         }
     }
     
+    @objc func closeTap(_ recognizer: UITapGestureRecognizer){
+        closeModalPressed(_:AnyObject.self)
+    }
+    
+    @IBAction func closeModalPressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
 }

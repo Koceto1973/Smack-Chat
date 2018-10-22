@@ -11,9 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddChannelVC" customModule="Smack_Chat" customModuleProvider="target">
             <connections>
-                <outlet property="bgView" destination="t81-7C-bQg" id="6Qz-33-UUz"/>
+                <outlet property="bgView" destination="mej-hx-72R" id="ZH8-vg-9h4"/>
                 <outlet property="channelDescriptionText" destination="26z-51-aXL" id="A6G-IT-V4i"/>
-                <outlet property="nameText" destination="p9S-5g-eLU" id="WJj-xM-TER"/>
+                <outlet property="channelNameText" destination="p9S-5g-eLU" id="WJj-xM-TER"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -32,7 +32,7 @@
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="mKs-PW-yq2">
                             <rect key="frame" x="42.5" y="90" width="250" height="89"/>
                             <subviews>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p9S-5g-eLU">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p9S-5g-eLU">
                                     <rect key="frame" x="0.0" y="0.0" width="250" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="250" id="oCa-EE-MA1"/>
@@ -50,7 +50,7 @@
                                         <constraint firstAttribute="width" constant="250" id="Ui8-Rb-FE4"/>
                                     </constraints>
                                 </view>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="description" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="26z-51-aXL">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="26z-51-aXL">
                                     <rect key="frame" x="0.0" y="52" width="250" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="250" id="uAW-Ix-IJD"/>
