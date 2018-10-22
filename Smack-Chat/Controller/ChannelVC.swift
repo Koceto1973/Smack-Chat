@@ -49,7 +49,7 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBAction func loginBtnPressed(_ sender: Any) {
         if AuthService.instance.isLoggedIn {
-            // show profile
+            // show profile of old fashioned xib view controller
             let profile = ProfileVC()
             profile.modalPresentationStyle = .custom
             present(profile, animated: true, completion: nil)

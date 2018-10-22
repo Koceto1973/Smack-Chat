@@ -14,12 +14,12 @@ class ProfileVC: UIViewController {
     }
 
     @IBAction func closeModalPressed(_ sender: Any) {
-        UserDataService.instance.logoutUser()
-        NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
-    }
+        dismiss(animated: true, completion: nil)    }
     
     @IBAction func logoutPressed(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        UserDataService.instance.logoutUser()
+        NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+        closeModalPressed(_:AnyObject.self)
     }
     
     func setupView() {
@@ -29,11 +29,11 @@ class ProfileVC: UIViewController {
         profileImage.backgroundColor = UserDataService.instance.returnUIColor(components: UserDataService.instance.avatarColor)
         
         let closeTouch = UITapGestureRecognizer(target: self, action: #selector(ProfileVC.closeTap(_:)))
-        //bgView.addGestureRecognizer(closeTouch)
+        bgView.addGestureRecognizer(closeTouch)
     }
     
     @objc func closeTap(_ recognizer: UITapGestureRecognizer){
-        dismiss(animated: true, completion: nil)
+        closeModalPressed(_:AnyObject.self)
     }
 
 }
