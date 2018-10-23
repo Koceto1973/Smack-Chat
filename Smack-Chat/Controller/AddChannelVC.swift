@@ -50,6 +50,9 @@ class AddChannelVC: UIViewController, UITextFieldDelegate {
         SocketService.instance.addChannel(channelName: channelName, channelDescription: channelDescription) { (success) in
             if success {
                 self.closeModalPressed(_:AnyObject.self)
+                debugPrint("addChannel request to server went ok")
+            } else {
+                debugPrint("addChannel request to server failed")
             }
         }
     }

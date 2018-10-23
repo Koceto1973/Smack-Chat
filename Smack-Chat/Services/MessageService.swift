@@ -37,7 +37,7 @@ class MessageService {
                     
                     completion(true)
                 }
-                catch { print("swiftyJSON trowed error, \(error)")  }
+                catch { print("swiftyJSON trew error, \(error)")  }
                 
             } else {
                 completion( false )

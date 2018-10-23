@@ -17,7 +17,8 @@ class SocketService: NSObject {
         super.init()
     }
     
-    let socket = SocketManager(socketURL: URL(string: BASE_URL)!).defaultSocket
+    let manager = SocketManager(socketURL: URL(string: BASE_URL)!)
+    lazy var socket:SocketIOClient = manager.defaultSocket
     
     func establishConnection(){
         socket.connect()
