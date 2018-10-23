@@ -68,6 +68,8 @@ class UserDataService {
         AuthService.instance.userEmail = ""
         AuthService.instance.authToken = ""
         
+        MessageService.instance.clearChannels()
+        
         debugPrint("\nUser logout confirmed.\n")
     }
 }

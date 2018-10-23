@@ -25,10 +25,8 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.revealViewController()?.rearViewRevealWidth = self.view.frame.size.width - 60
         
         NotificationCenter.default.addObserver(self, selector: #selector(ChannelVC.userDataDidChange(_:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        setupUserInfo()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(ChannelVC.channelsLoaded(_:)), name: NOTIF_CHANNELS_LOADED, object: nil)
         
         SocketService.instance.getChannel { (success) in
             if success {
@@ -40,8 +38,16 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        setupUserInfo()        
+    }
+    
     @objc func userDataDidChange(_ notif:Notification) {
         setupUserInfo()
+    }
+    
+    @objc func channelsLoaded( _ notification: Notification){
+        tableView.reloadData()
     }
     
     @IBAction func addChannelPressed(_ sender: Any) {
@@ -72,6 +78,7 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             loginBtn.setTitle("Login", for: .normal)
             userImage.image = UIImage(named: "menuProfileIcon")
             userImage.backgroundColor = UIColor.clear
+            tableView.reloadData()
         }
     }
     

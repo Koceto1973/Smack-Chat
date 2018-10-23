@@ -616,6 +616,7 @@
                         <viewLayoutGuide key="safeArea" id="ctU-js-2An"/>
                     </view>
                     <connections>
+                        <outlet property="channelNameLabel" destination="dBV-xN-SJB" id="9jY-YX-I6E"/>
                         <outlet property="menuBtn" destination="lVE-JR-7ex" id="YBy-l9-glF"/>
                     </connections>
                 </viewController>
