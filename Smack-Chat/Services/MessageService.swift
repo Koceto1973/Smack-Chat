@@ -69,16 +69,16 @@ class MessageService {
                             
                             let message = Message(message: messageBody, userName: userName, channelId: channelId, userAvatar: userAvatar, userAvatarColor: userAvatarColor, id: id, timeStamp: timeStamp)
                             self.messages.append(message)
-                            
                         }
                         completion(true)
                     }
                 }
                 catch {
-                    print("swiftyJSON trew error on getting messages for a channel, \(error)")
+                    debugPrint("swiftyJSON trew error on parsing messages for a channel, \(error)")
                     completion(false)
                 }
             } else {
+                debugPrint("swiftyJSON trew error on response for parsing messages for a channel")
                 debugPrint(response.result.error as Any)
                 completion(false)
             }
