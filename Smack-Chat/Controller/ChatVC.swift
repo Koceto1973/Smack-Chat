@@ -22,6 +22,11 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         tableView.delegate = self
         tableView.dataSource = self
         
+        // accomodating longer messages
+        // first set number of message label lines to zero
+        tableView.estimatedRowHeight = 80
+        tableView.rowHeight = UITableView.automaticDimension
+        
         // message keyboard shifter up
         view.bindToKeyboard()
         // message keyboard shifter down
