@@ -24,6 +24,8 @@ class ChatVC: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.userDataDidChange(_:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.channelSelected(_:)), name: NOTIF_CHANNEL_SELECTED, object: nil)
+        
         if AuthService.instance.isLoggedIn {
                 print("\n someone with email \n \(AuthService.instance.userEmail) \n and authToken \n \(AuthService.instance.authToken) \n is logged in \n")
             AuthService.instance.findUserByEmail { (success) in
@@ -38,6 +40,15 @@ class ChatVC: UIViewController {
         } else {
             channelNameLabel.text = "Please, log in."
         }
+    }
+    
+    @objc func channelSelected(_ notification: Notification){
+        updateWithChannel()
+    }
+    
+    func updateWithChannel(){
+        let channelName = MessageService.instance.selectedChannel?.name ?? ""
+        channelNameLabel.text = "#\(channelName)"
     }
     
     func onLoginGetMessages() {
