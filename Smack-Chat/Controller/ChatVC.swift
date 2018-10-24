@@ -15,6 +15,9 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var channelNameLabel: UILabel!
     @IBOutlet weak var messageTextBox: UITextField!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var sendButton: UIButton!
+    
+    var isTyping = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +29,8 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         // first set number of message label lines to zero
         tableView.estimatedRowHeight = 80
         tableView.rowHeight = UITableView.automaticDimension
+        
+        sendButton.isHidden = true
         
         // message keyboard shifter up
         view.bindToKeyboard()
@@ -82,7 +87,20 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let channelName = MessageService.instance.selectedChannel?.name ?? ""
         channelNameLabel.text = "#\(channelName)"
         getMessages()
-    }    
+    }
+    
+    // send button shows after editing
+    @IBAction func messageBoxEditing(_ sender: Any) {
+        if messageTextBox.text == "" {
+            isTyping = false
+            sendButton.isHidden = true
+        } else {
+            if isTyping == false {
+                sendButton.isHidden = false
+            }
+            isTyping = true
+        }
+    }
     
     @IBAction func sendMessagePressed(_ sender: Any) {
         if AuthService.instance.isLoggedIn {
