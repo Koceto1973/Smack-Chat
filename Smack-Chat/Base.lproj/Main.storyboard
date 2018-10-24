@@ -688,6 +688,12 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ifi-ip-mnB">
+                                <rect key="frame" x="8" y="622" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -698,6 +704,8 @@
                             <constraint firstItem="WMf-vW-Dz1" firstAttribute="bottom" secondItem="ctU-js-2An" secondAttribute="bottom" id="Gxb-oI-MIO"/>
                             <constraint firstItem="ge3-id-SWF" firstAttribute="top" secondItem="cFO-IM-cgn" secondAttribute="bottom" id="Jga-fS-Kdp"/>
                             <constraint firstItem="ctU-js-2An" firstAttribute="trailing" secondItem="cFO-IM-cgn" secondAttribute="trailing" id="JjY-6m-2Sx"/>
+                            <constraint firstItem="WMf-vW-Dz1" firstAttribute="top" secondItem="ifi-ip-mnB" secondAttribute="bottom" constant="5" id="QZO-Hs-9RZ"/>
+                            <constraint firstItem="ifi-ip-mnB" firstAttribute="leading" secondItem="ctU-js-2An" secondAttribute="leading" constant="8" id="UKs-6E-bzg"/>
                             <constraint firstItem="ctU-js-2An" firstAttribute="trailing" secondItem="WMf-vW-Dz1" secondAttribute="trailing" id="Uf7-uk-rY8"/>
                             <constraint firstItem="WMf-vW-Dz1" firstAttribute="top" secondItem="ge3-id-SWF" secondAttribute="bottom" constant="30" id="ijh-Ig-Ekr"/>
                             <constraint firstItem="cFO-IM-cgn" firstAttribute="top" secondItem="ctU-js-2An" secondAttribute="top" id="kIb-Px-fQN"/>
@@ -712,6 +720,7 @@
                         <outlet property="messageTextBox" destination="WMf-vW-Dz1" id="uMs-u5-mxJ"/>
                         <outlet property="sendButton" destination="a62-0k-BIn" id="SMd-IW-j7t"/>
                         <outlet property="tableView" destination="ge3-id-SWF" id="lZC-19-aPb"/>
+                        <outlet property="typingUsersLabel" destination="ifi-ip-mnB" id="Xyg-sQ-eDG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NZA-11-C17" userLabel="First Responder" sceneMemberID="firstResponder"/>
