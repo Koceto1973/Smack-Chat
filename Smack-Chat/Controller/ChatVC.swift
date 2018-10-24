@@ -42,6 +42,13 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.channelSelected(_:)), name: NOTIF_CHANNEL_SELECTED, object: nil)
         
+        SocketService.instance.getChatMessage { (success) in
+            if success {
+                self.tableView.reloadData()
+                print("???")
+            }
+        }
+        
         if AuthService.instance.isLoggedIn {
                 print("\n someone with email \n \(AuthService.instance.userEmail) \n and authToken \n \(AuthService.instance.authToken) \n is logged in \n")
             AuthService.instance.findUserByEmail { (success) in
